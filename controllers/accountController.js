@@ -18,7 +18,7 @@ const login = async (req, res) => {
       const token = jwt.sign({ id: findUser._id }, process.env.SECRETTOKEN, {
         expiresIn: "2d",
       })
-      res.status(200).json({ msg: "Login successful", token: token });
+      res.status(200).json({ msg: "Login successful", token: token,user:findUser });
   
   
   

@@ -21,8 +21,7 @@ const constructionSiteSchema = mongoose.Schema({
     },
     Images:[
         {
-        type:String
-        
+        type:String  
     }
 ]
 

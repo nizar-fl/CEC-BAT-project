@@ -58,9 +58,22 @@ const removeconstructionSite = async(req,res)=>{
       return res.status(500).json({ msg: error.message });
     }
   }
+const constructionsite = async(req,res)=>{
+  try {
+    const constructionsites = await constructionSite.find()
+    if(!constructionsites){
+      return res.status(401).json({msg:"something went wrong"})
+    }
+    res.status(200).json(constructionsites)
+    
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+}
 
   module.exports = {
     addconstructionSite,
     updateconstructionSite,
-    removeconstructionSite
+    removeconstructionSite,
+    constructionsite
   };

@@ -1,14 +1,17 @@
 const  express = require("express");
 const router = express.Router();
 
-const {createUserAccount,  updateUserAccount, removeUserAccount,getaccountbyrole,getaccountbyId,getaccountbyname} = require('../controllers/accountController')
+const {login,createUserAccount,  updateUserAccount, removeUserAccount,getaccountbyrole,getaccountbyId,getaccountbyname} = require('../controllers/accountController')
+const isAdmin = require("../middlewares/isAdmin")
 
-router.post("/createUseraccount",createUserAccount)
-router.put("/updateUseraccount/:userid",updateUserAccount)
-router.delete("/deleteUseraccount/:userid",removeUserAccount)
-router.get("/getaccountbyrole/:role",getaccountbyrole)
-router.get("/getaccountbyId/:userid",getaccountbyId)
-router.get("/getaccountbyname/:username",getaccountbyname)
+
+router.post("/login",login)
+router.post("/createUseraccount",isAdmin,createUserAccount)
+router.put("/updateUseraccount/:userid",isAdmin,updateUserAccount)
+router.delete("/deleteUseraccount/:userid",isAdmin,removeUserAccount)
+router.get("/getaccountbyrole/:role",isAdmin,getaccountbyrole)
+router.get("/getaccountbyId/:userid",isAdmin,getaccountbyId)
+router.get("/getaccountbyname/:username",isAdmin,getaccountbyname)
 
 
  

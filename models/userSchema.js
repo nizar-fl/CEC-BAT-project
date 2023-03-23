@@ -35,6 +35,10 @@ const userSchema = mongoose.Schema({
     role:{
         type:String,
         default :"appointer"
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
     }    
 
 })
